@@ -1,0 +1,27 @@
+{
+  "name": "httpclient",
+  "version": "1.0.0",
+  "description": "Facilitate the swapability of http client dependencies in a project.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johanfive/httpClient.git"
+  },
+  "keywords": [
+    "http client",
+    "request",
+    "swapable"
+  ],
+  "author": "johanFive",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johanfive/httpClient/issues"
+  },
+  "homepage": "https://github.com/johanfive/httpClient#readme",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
