@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Facilitate the swapability of http client dependencies in a Node.js project.",
   "main": "src/index.js",
+  "files": [
+    "src/**/*.js",
+    "!src/**/*.test.js"
+  ],
   "scripts": {
     "test": "jest --coverage"
   },
