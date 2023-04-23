@@ -63,6 +63,9 @@ Maybe you'd like to write logic so that not ok responses throw errors instead,
 and you'd very much like writing this logic only once. So:
 
 ```js
+// slackApiClient.js
+const buildHttpClient = require('./path/to/buildHttpClient');
+
 const slackApiClient = buildHttpClient({
   customSuccessAdapter: (res) => {
     if (res.ok) {
@@ -86,6 +89,7 @@ tokens to be writen only once as well.
 Here is how this might look like:
 
 ```js
+// myCompanyApiClient.js
 const buildHttpClient = require('./path/to/buildHttpClient');
 
 function MyCompanyApiClient() {
