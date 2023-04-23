@@ -15,7 +15,10 @@ const plugImposableHeadersIn = (headers, getImposableHeaders) => {
 
 const buildHeaders = ({ headers, getDefaultHeaders, getImposableHeaders }) =>
   headers === undefined // Allow setting headers as null to send headerless requests
-    ? plugImposableHeadersIn(getDefaultHeaders ? getDefaultHeaders() : {}, getImposableHeaders)
+    ? plugImposableHeadersIn(
+        getDefaultHeaders ? getDefaultHeaders() : {},
+        getImposableHeaders
+      )
     : plugImposableHeadersIn(headers, getImposableHeaders);
 
 const getClientBuilder =
@@ -53,7 +56,9 @@ const getClientBuilder =
       return sendRequest(request)
         .then(successAdapter)
         .then((response) =>
-          customSuccessAdapter ? customSuccessAdapter(response, request) : response
+          customSuccessAdapter
+            ? customSuccessAdapter(response, request)
+            : response
         )
         .catch(failureAdapter)
         .catch((error) => {

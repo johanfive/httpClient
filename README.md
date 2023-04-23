@@ -1,15 +1,15 @@
 # httpClient
-Facilitate the swapability of http client dependencies in a project.
+Facilitate the swapability of HTTP client dependencies in a Node.js project.
 
 ## Swapability
 Dependency injection's fraternal twin.
 
-Dependencies, and the security vulnerabilities that come with them, are burdens for node.js project maintainers. We want to promote code that makes replacing 1 dependency with another easy.
+Dependencies, and the security vulnerabilities that come with them, are burdens on node.js project maintainers. We want to promote code that makes replacing 1 dependency with another easy.
 
 ### Case in point:
 The `request` _npm package_ used to be a _dependency_ for millions of _node_ projects.
 
-Then came this commit and update to the readme:
+Then came this update:
 > As of Feb 11th 2020, request is fully deprecated. No new changes are expected [to] land.
 > In fact, none have landed for some time.
 
@@ -17,7 +17,7 @@ Then came this commit and update to the readme:
 `fetch API` is probably going to become native to node. Even then, what is to say that something
 better won't surface down the road?
 
-This project is about reducing the amount of time and effort required to transition from `request`
+This project reduces the time and effort required to transition from `request`
 to `axios` to `fetch API` to `whatever is the new shiny thing today`.
 
 One amazing side-effect of using this library, is that it also organically promotes good unit tests,
@@ -43,6 +43,8 @@ const buildHttpClient = getClientBuilder({
     throw e;
   },
 });
+
+module.exports = buildHttpClient;
 ```
 `getClientBuilder` returns a function (named `buildHttpClient` here)
 that allows you to spin up as many http Clients as your project needs.
@@ -57,7 +59,7 @@ One of the interesting things about the Slack API,
 is that it rarely returns any status other than `200`.
 What you get instead is an `{ ok: false, ...etc }` payload.
 
-Maybe you'd like to write logic so that not ok responses throw errors,
+Maybe you'd like to write logic so that not ok responses throw errors instead,
 and you'd very much like writing this logic only once. So:
 
 ```js
@@ -128,7 +130,9 @@ MyCompanyApiClient.prototype.fetchUsers = function fetchUsers() {
 ```
 
 #### sendRequest (required)
-This is the function that will actually execute the http request.
+Typically provided by a separate library like `axios` or `fetch`,
+this is the function that will actually execute the http request.
+
 It will be called with:
 ```json
 {
@@ -156,7 +160,7 @@ If really you're happy with the response or error just the way the vendor delive
 then just do:
 ```js
 successAdapter = res => res;
-failureAdapter = err => err;
+failureAdapter = err => { throw err };
 ```
 
 #### customSuccessAdapter & customFailureAdapter
