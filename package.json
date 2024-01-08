@@ -1,17 +1,18 @@
 {
   "name": "httpclient",
-  "version": "1.0.0",
-  "description": "Facilitate the swapability of http client dependencies in a Node.js project.",
+  "version": "2.0.2",
+  "description": "Facilitate the swappability of http client dependencies in a Node.js project.",
   "main": "src/index.js",
+  "types": "src/index.d.ts",
   "files": [
     "src/**/*.js",
-    "!src/**/*.test.js"
+    "!src/**/*.test.js",
+    "src/index.d.ts"
   ],
   "scripts": {
     "test": "jest --coverage",
     "sandbox": "node sandbox.js"
   },
-  "types": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/johanfive/httpClient.git"
@@ -19,7 +20,11 @@
   "keywords": [
     "http client",
     "request",
-    "swappable"
+    "swappable",
+    "replaceable",
+    "ajax",
+    "promise",
+    "node"
   ],
   "author": "johanFive",
   "license": "MIT",
